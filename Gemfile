@@ -10,6 +10,7 @@ gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'figaro'
 gem 'faraday'
+gem 'active_model_serializers', '~> 0.10.0'
 
 gem "twitter-bootstrap-rails"
 gem "therubyracer"
