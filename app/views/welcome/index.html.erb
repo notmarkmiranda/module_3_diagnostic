@@ -1,0 +1,4 @@
+<%= form_for Station.new, url: stations_path do |f| %>
+  <%= f.text_field :search %>
+  <%= f.submit "Locate" %>
+<% end %>
