@@ -5,10 +5,16 @@ describe NrelService do
     @service = NrelService.new
   end
 
-  it "can find stations based on zip code" do
+  it "can find stations based on zip code and distance" do
     VCR.use_cassette("stations_by_zip") do
-      a = @service.stations(80203, 6)
-      require 'pry'; binding.pry
+      response = @service.stations(80203, 6)
+      body = JSON.parse(response.body)
+      expect do
+        body["fuel_stations"].map do |station|
+          station["fuel_type_code"]
+        end.uniq.count.to eq 2
+      end
     end
   end
+
 end
