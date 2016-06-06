@@ -16,10 +16,14 @@ gem "therubyracer"
 gem "less-rails"
 
 group :development, :test do
-  gem 'pry'
   gem 'rspec-rails'
-  gem 'vcr'
   gem 'webmock'
+  gem 'vcr'
+  gem 'pry'
+end
+
+group :test do
+  gem 'capybara'
 end
 
 group :development do
