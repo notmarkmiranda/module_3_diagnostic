@@ -40,6 +40,11 @@ RSpec.configure do |config|
     mocks.verify_partial_doubles = true
   end
 
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/cassettes"
+  config.hook_into :webmock
+  config.configure_rspec_metadata!
+end
 # The settings below are suggested to provide a good initial experience
 # with RSpec, but feel free to customize to your heart's content.
 =begin
