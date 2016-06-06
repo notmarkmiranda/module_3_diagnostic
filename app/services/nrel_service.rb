@@ -2,8 +2,16 @@ require 'faraday'
 
 
 class NrelService
-  def @_connection
-    Faraday.new(url: "GET https://api.data.gov/nrel/alt-fuel-stations/v1.json?limit=1&api_key=#{ENV['']}")
+
+
+  def initialize
+    @_connection = Faraday.new(url: 'https://developer.nrel.gov') do |c|
+      c.request  :url_encoded
+      c.response :logger
+      c.adapter  Faraday.default_adapter
+      c.params['format'] = "json"
+      c.params['api_key'] = ENV['nrel_api_key']
+    end
   end
 
   private
