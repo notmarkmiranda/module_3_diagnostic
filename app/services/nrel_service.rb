@@ -14,7 +14,7 @@ class NrelService
     end
   end
 
-  def stations(zip, distance = 6)
+  def stations(zip, distance)
     response = connection.get do |p|
       p.url("/api/alt-fuel-stations/v1/nearest.json")
       p.params['limit']     = 10
@@ -22,10 +22,15 @@ class NrelService
       p.params['radius']    = distance
       p.params['fuel_type'] = "LPG,ELEC"
     end
+    JSON.parse(response.body)["fuel_stations"]
   end
+
+
 
   private
     def connection
       @_connection
     end
+
+
 end

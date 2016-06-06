@@ -1,6 +1,6 @@
 class SearchController < ApplicationController
 
   def index
-    @stations = JSON.parse(NrelService.new.stations(params["q"]).body)
+    @stations = NrelService.new.nearest_stations(params["q"])
   end
 end
